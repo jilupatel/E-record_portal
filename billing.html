@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>credit website</title>
+    <link rel="stylesheet" href="billing.css">
+</head>
+<body>
+    <div class="box">
+        <form name="form" id="billingForm" action="billing.php" method="POST" onsubmit="submitBillingForm(event)">
+            <h2>Bill</h2>
+            <div class="inputbox">
+                <input type="text" name="name" id="name" required>
+                <span>Username</span>
+                <i></i>
+            </div>
+            <div id="items">
+                <div class="item">
+                    <div class="inputbox">
+                        <input type="text" name="item[]" required>
+                        <span>Enter item</span>
+                        <i></i>
+                    </div>
+                    <div class="inputbox">
+                        <input type="number" name="quantity[]" required>
+                        <span>Enter quantity</span>
+                        <i></i>
+                    </div>
+                    <div class="inputbox">
+                        <input type="number" name="price[]" required>
+                        <span>Enter price</span>
+                        <i></i>
+                    </div>
+                </div>
+            </div>
+            <button type="button" onclick="addItem()">Add Item</button>
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+
+    <script>
+        function addItem() {
+            var itemsDiv = document.getElementById("items");
+            var newItem = document.createElement("div");
+            newItem.classList.add("item");
+            newItem.innerHTML = `
+                <div class="inputbox">
+                    <input type="text" name="item[]" required>
+                    <span>Enter item</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="number" name="quantity[]" required>
+                    <span>Enter quantity</span>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="number" name="price[]" required>
+                    <span>Enter price</span>
+                    <i></i>
+                </div>
+            `;
+            itemsDiv.appendChild(newItem);
+        }
+
+        function submitBillingForm(event) {
+            // Your form submission logic goes here
+        }
+    </script>
+</body>
+</html>

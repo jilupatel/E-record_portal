@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <title>
+        Customer Home Page
+    </title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #007BFF;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .back {
+            background-color: #444;
+            text-align: left;
+            padding: 10px 10px;
+        }
+
+        button:hover {
+            background-color: rgb(195, 195, 195);
+            color: black;
+        }
+
+        .back button:hover {
+            background-color: rgb(160, 48, 0);
+        }
+
+        .back a button {
+            height: 35px;
+            background-color: #b33600;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        section a button {
+            width: 250px;
+            height: 250px;
+            padding: 10px;
+            margin: 130px 35px ;
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(0, 80, 175);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 30% 30% / 80% 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <label for="h1">
+            <h1>CUSTOMER ONLINE SHOP</h1>
+        </label>
+    </header>
+    <main>
+        <div class="back">
+            <a href="http://127.0.0.1:5500/home.html"><button>back</button></a>
+        </div>
+        <section>
+            <div class="navigation">
+                <a href="http://127.0.0.1:5500/additem.html"><button>Add Item</button></a>
+                <a href="http://127.0.0.1:5500/delete.html"><button>Delete Item</button></a>
+                <a href=""><button>Customer Details</button></a>
+                <a href="http://127.0.0.1:5500/remain_pay.html"><button>Remaining
+                        Payment</button></a>
+                <a href="http://127.0.0.1:5500/billing.html"><button>Billing</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- add link to contact developers -->
+    </footer>
+
+</body>
+
+</html>

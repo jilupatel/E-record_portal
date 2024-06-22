@@ -1,0 +1,142 @@
+<html>
+
+<head>
+    <title>
+        CR
+    </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url(image3.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+            background-size: cover;
+            background-size: 100% 100%;
+        }
+
+        .title {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .title span {
+            color: #0056B3;
+            font-family: cursive;
+            font-size: 60px;
+            padding: 10px;
+            padding-right: 1000px;
+        }
+
+        .title button {
+            font-size: 30px;
+            color: black;
+            background-color: white;
+            border: none;
+        }
+
+        .upper nav {
+            width: 100%;
+            height: 50px;
+            background-color: rgba(75, 131, 200, 0.5);
+        }
+
+        .upper ul li {
+            list-style: none;
+            display: inline-block;
+            float: right;
+            line-height: 50px;
+        }
+
+        .upper ul li a {
+            background-color: #0056B3;
+            display: block;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: cursive;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .upper ul li a:hover {
+            background-color: #fff;
+            color: black;
+        }
+
+        .menubutton {
+            display: inline-block;
+            padding: 30px 50px;
+            background-color: #0056B3;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #0056B3;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 5px 5px;
+        }
+
+        .menubutton:hover+.dropdown,
+        .dropdown:hover {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 20px 42.5px;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <span>
+                <b>CR Portal</b>
+            </span>
+            <!-- <button><a href="">Login</a></button> -->
+        </div>
+    </header>
+    <main>
+        <section class="upper">
+            <nav>
+                <ul>
+                    <li><a href="cash.html">Cash</a></li>
+                    <li><a href="billing.html">credit</a></li>
+                    <li><a href="remain_pay.html">Remain Payment</a></li>
+                    <li><a href="customer.html">Customer</a></li>
+                    <li><a href="homePage.html" style="border-radius: 45% 0% 0% 45%;">Home</a></li>
+                </ul>
+            </nav>
+        </section>
+        <div class="deak">
+            <div class="menubutton">
+                All Categories
+            </div>
+            <div class="dropdown">
+                <a href="additem.html">Add Item</a>
+                <a href="bill.html">Bill</a>
+                <a href="cashDisplayFinal.php">Cash record</a>
+                <a href="delete.html">Delete Customer</a>
+                <a href="item.html">Item</a>
+                <a href="retrieve.html">Retrieve</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- Add footer part here -->
+    </footer>
+</body>
+
+</html>

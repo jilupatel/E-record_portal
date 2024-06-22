@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Information</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@100&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #23242a;
+            background-size: 80%;
+        }
+        form {
+            border-radius: 5px 5px;
+            background-color: white;
+            padding: 20px 20px;
+            width: 370px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+
+        h2 {
+            color: #0056B3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 32px;
+            font-weight: 500;
+            text-align: center;
+            padding-bottom: 30px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 20px 10px 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #23242a;
+            font-size: 1em;
+            letter-spacing: 0.05em;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 20px 10px 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #0056B3;
+            font-size: 1em;
+            letter-spacing: 0.05em;
+        }
+        button[type="button"] {
+            font-size: 20px;
+            border: none;
+            outline: none;
+            background: #0056B3;
+            padding: 5px;
+            margin-top: 30px;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button[type="submit"] {
+            font-size: 20px;
+            border: none;
+            outline: none;
+            background: #0056B3;
+            padding: 5px;
+            margin-top: 40px;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .link {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .link a {
+            margin: 28px 2px;
+            font-size: 16px;
+            color: #8f8f8f;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            color: #0056B3;
+            text-decoration: underline 3px;
+            text-underline-offset: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        body{
+            background-image: url(image2.png);
+        }
+    </style>
+    <form id="clientInfoForm" action="cash.php" method="POST">
+        <h2>Client Information</h2>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div id="items">
+            <div class="item">
+                <label for="item1">Item:</label>
+                <input type="text" class="item-name" name="items[]" required>
+                <label for="quantity1">Quantity:</label>
+                <input type="number" class="quantity" name="quantities[]" required oninput="calculateTotal()">
+                <label for="price1">Price:</label>
+                <input type="number" class="price" name="prices[]" required oninput="calculateTotal()">
+            </div>
+        </div>
+        <div>
+            <label for="total">Total Bill:</label>
+            <input type="number" id="total" name="total" readonly>
+        </div>
+        <button type="button" onclick="addItem()">Add Item</button>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function addItem() {
+            var itemsDiv = document.getElementById('items');
+            var newItemDiv = document.createElement('div');
+            newItemDiv.className = 'item';
+            newItemDiv.innerHTML = `
+                <label for="item">Item:</label>
+                <input type="text" class="item-name" name="items[]" required>
+                <label for="quantity">Quantity:</label>
+                <input type="number" class="quantity" name="quantities[]" required oninput="calculateTotal()">
+                <label for="price">Price:</label>
+                <input type="number" class="price" name="prices[]" required oninput="calculateTotal()">
+            `;
+            itemsDiv.appendChild(newItemDiv);
+        }
+
+        function calculateTotal() {
+            var total = 0;
+            var prices = document.querySelectorAll('.price');
+            var quantities = document.querySelectorAll('.quantity');
+            for (var i = 0; i < prices.length; i++) {
+                total += prices[i].value * quantities[i].value;
+            }
+            document.getElementById('total').value = total;
+        }
+    </script>
+</body>
+
+</html>

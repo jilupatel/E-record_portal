@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid gray;
+            padding: 8px;
+        }
+
+        th {
+            background-color: lightgray;
+            font-size: 17px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            padding-bottom: 20px;       
+            font-family: 'Times New Roman', Times, serif; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Item List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="itemList">
+            <!-- Item data will be displayed here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch and display item data
+        fetchItems();
+
+        function fetchItems() {
+            fetch('item.php')
+            .then(response => response.json())
+            .then(data => {
+                const itemList = document.getElementById('itemList');
+                itemList.innerHTML = ''; // Clear previous data
+
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.item}</td>
+                        <td>${item.price}</td>
+                        <td>${item.quantity}</td>
+                    `;
+                    itemList.appendChild(row);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

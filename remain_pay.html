@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remaining Data</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        th, td {
+            border: 1px solid gray;
+            padding: 8px;
+        }
+
+        th {
+            background-color: lightgray;
+            font-size: 17px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            padding-bottom: 20px;       
+            font-family: 'Times New Roman', Times, serif; 
+        }
+    </style>
+</head>
+<body>
+    <div id="results"></div>
+
+    <script>
+        window.onload = function() {
+            retrieveRemainingData();
+        };
+
+        function retrieveRemainingData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "remain_pay.php", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    displayResults(response);
+                }
+            };
+            xhr.send();
+        }
+
+        function displayResults(data) {
+            var resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = ""; // Clear previous results
+            if (data.length > 0) {
+                var html = "<table border='1'><tr><th>Name</th><th>Phone Number</th><th>Address</th><th>Total Price</th><th>profit</th></tr>";
+                data.forEach(function(record) {
+                    html += "<tr>";
+                    html += "<td>" + record.name + "</td>";
+                    html += "<td>" + record.number + "</td>";
+                    html += "<td>" + record.address + "</td>";
+                    html += "<td>" + record.total_price + "</td>";
+                    html += "<td>" + record.profit + "</td>";
+                    html += "</tr>";
+                });
+                html += "</table>";
+                resultsDiv.innerHTML = html;
+            } else {
+                resultsDiv.innerHTML = "No remaining data found";
+            }
+        }
+    </script>
+</body>
+</html>
